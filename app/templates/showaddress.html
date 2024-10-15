@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}FlipKart|Carts{% endblock %}
+{% block body %}
+<div class="container">
+    <h1>Select an Address for Payment</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <ul>
+            {% for a in addresses %}
+            <li>
+            <input type="radio" id="a_{{a.id}}" name="selected_addresses_id" value="={{a.id}}" required>
+            <label>
+                Address:{{a.addr}}-Pincode:{{a.pincode}}<br>
+                Contact:{{a.contactnum}}
+            </label>
+            </li>
+            {% empty %}
+            <li>No saved addresses Found!</li>
+            {% endfor %}
+        </ul>
+        <a href="/make_payment">
+        <button type="submit" class="btn btn-danger">Processed to Payment</button>
+        </a>
+    </form>
+    <a href="/addaddress">Add a New Address</a>
+</div>
+{% endblock %}

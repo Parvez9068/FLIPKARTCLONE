@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}FlipKart|Seller{% endblock %}
+{%  block body %}
+<div class="container">
+    <div class="row">
+
+        <a href="/ProductRegister"><h3>Product List</h3></a>
+
+        {% for x in object_list %}
+        <div class="col-md-3 mt-3">
+          <div class="card px-4 py-2 text-center" style="width: 15rem;height: 20rem;">
+            
+            <img src="/media/{{x.images}}" class="card-img-top" alt="{{x.productname}}" width="100px" height="150px">
+            <div class="card-body">
+              <div class="card-text text-wrap">{{x.productname}} <br><span class="fw-semibold">From {{x.price}}/-</span></div>
+              <p class="card-text">{{x.description}}</p>
+              <a href="/ProductUpdate/{{x.pk}}" class="btn btn-primary">Update</a>
+              <a href="/ProductDelete/{{x.pk}}" class="btn btn-primary">Remove</a>
+            </div>
+            
+          </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% block title %}FlipKart|Carts{% endblock %}
+{% block body %}
+<div class="container-fluid">
+    <div class="row">
+        <!-- cards details starts here -->
+         <div class="col-md-9">
+            <div class="row md-3">
+                {% for x in allcarts %}
+                <div class="col-md-4">
+                    <img src="{{x.productid.images.url}}" alt="" width="300px" height="400px" class="m-3">
+                </div>
+                <div class="col-md-8">
+                    <div class="row ">
+                        <div class="card-header fw-bold">
+                            Product Details
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">{{x.productid.productname}}</h5>
+                            <p class="card-text text-success fw-bold">Special Price</p>
+                            <p class="card-text">
+                                <strong>{{x.productid.price}}/-</strong>
+                                &nbsp;
+                                <del>{{x.productid.price|add:x.productid.price}}/-</del>
+                                <span class="text-success">50% off</span>
+                            </p>
+                            <p class="card-text">{{x.productid.description}}</p>
+                            <p class="card-text fw-bold">Available Offers</p>
+                            <ul>
+                                <li>Bank Offer 10% upto 50/- on FlipKart</li>
+                                <li>Bank Offer 5% CashBack</li>
+                                <li>Bank Offer Flat 750/- off on HDFC Bank</li>
+                                <li>Parter Offer Sign-Up Pay Later on FlipKart</li>
+                            </ul>
+                            <p class="card-text">Deliver by {{date}} |<span class="text-success">Free</span></p>
+                            <p class="card-text">10 Days Return Policy</p>
+                            <p>
+                                <strong>QTY:</strong>
+                                <a href="/updateqty/0/{{x.productid.productid}}"><button class="btn btn-danger">-</button></a>
+                                <input type="number" value="{{x.qty}}" style="width: 45px;">
+                                <a href="/updateqty/1/{{x.productid.productid}}"><button class="btn btn-danger">+</button></a>
+                            </p>
+                            <a class="btn btn-warning" href="/addaddress">Make Payment</a>
+                            <a class="btn btn-primary" href="/removecart/{{x.productid.productid}}">Remove Cart</a>
+                        </div>
+                    </div> 
+                </div>
+
+
+                {% endfor %}
+            </div>
+         </div>
+        <!-- cards details ends  here --> 
+
+        <!-- total amount section starts here -->
+         <div class="col-md-3">
+            <div class="eow">
+                <h3 class="btn-danger text-white">Total Amount Section</h3>
+                <h5><strong>Total items:{{totalitems}}</strong></h5>
+                <hr>
+                <h5><strong>total Amount: Rs. {{totalamount}}</strong></h5>
+                {% if totalitems >= 1 %}
+                <a href="/addaddress"><button class="btn btn-danger">Make Payment</button></a>
+                {% else %}
+                <a href="#"><button class="btn btn-danger">Make Payment</button></a>
+                {% endif %}
+            </div>
+
+         </div>
+        <!-- total amount ends starts here -->
+    </div>
+</div>
+
+{% endblock %}
