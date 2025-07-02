@@ -1,0 +1,39 @@
+{% extends 'user/base.html' %}
+{% block title %}Contact Us{% endblock %}
+
+{% block content %}
+    <h2 class="text-center mb-4">Contact Us</h2>
+
+    {% if message %}
+        <div class="alert alert-success text-center">{{ message }}</div>
+    {% endif %}
+
+    <form method="post" class="shadow p-4 bg-white rounded" style="max-width: 600px; margin: 0 auto;">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="name" class="form-label">Name:</label>
+            <input type="text" id="name" name="name" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email:</label>
+            <input type="email" id="email" name="email" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="message" class="form-label">Message:</label>
+            <textarea id="message" name="message" class="form-control" rows="4" required></textarea>
+        </div>
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary px-4">Send</button>
+        </div>
+    </form>
+
+    <div class="mt-5 text-center">
+        <h5>You can also reach us directly:</h5>
+        <p><strong>Email:</strong> support@example.com</p>
+        <p><strong>Phone:</strong> +91-9876543210</p>
+    </div>
+
+    <div class="text-center mt-4">
+        <a href="{% url 'fake_index' %}" class="btn btn-secondary">Back to Home</a>
+    </div>
+{% endblock %}

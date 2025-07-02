@@ -1,0 +1,14 @@
+.about-container {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    padding: 30px;
+}
+
+.about-container h2 {
+    color: #007bff;
+}
+
+.about-container p {
+    line-height: 1.6;
+}

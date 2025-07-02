@@ -1,0 +1,40 @@
+{% extends 'user/base.html' %}
+{% load static %}
+
+{% block title %}About Us{% endblock %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'css/about.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5 mb-5">
+    <h2 class="text-center mb-4">About Us</h2>
+
+    <div class="shadow p-4 bg-white rounded" style="max-width: 800px; margin: 0 auto; font-size: 1.1rem;">
+        <p>Welcome to <strong>Flipkart Clone</strong> – your one-stop destination for the best online shopping experience!</p>
+
+        <p>We are a passionate team of developers and designers recreating the look, feel, and core features of Flipkart to provide a realistic e-commerce project experience for learning and demonstration purposes.</p>
+
+        <p>Whether you're browsing for electronics, fashion, or daily essentials, our platform is designed to showcase:</p>
+        <ul>
+            <li>Modern frontend design with Bootstrap</li>
+            <li>Functional shopping cart and booking systems</li>
+            <li>Product filtering, searching, and user profiles</li>
+            <li>Admin control panel and more</li>
+        </ul>
+
+        <p>This project is built using <strong>Python Django</strong> on the backend and is ideal for developers learning full-stack development, building portfolios, or teaching real-world concepts.</p>
+
+        <hr>
+
+        <p><strong>Contact us:</strong> If you have any questions, suggestions, or want to contribute, feel free to reach out on our <a href="{% url 'contact' %}">Contact Page</a>.</p>
+
+        <p class="text-muted text-center mt-4">© 2025 Flipkart Clone Project | Built for learning purposes only</p>
+    </div>
+
+    <div class="text-center mt-4">
+        <a href="{% url 'fake_index' %}" class="btn btn-secondary">Back to Home</a>
+    </div>
+</div>
+{% endblock %}
